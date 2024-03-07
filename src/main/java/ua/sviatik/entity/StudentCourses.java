@@ -9,6 +9,7 @@ public class StudentCourses {
         this.studentId = studentId;
         this.courseId = courseId;
     }
+
     public StudentCourses(int studentCoursesId, int studentId, int courseId) {
         this.studentCoursesId = studentCoursesId;
         this.studentId = studentId;
@@ -22,10 +23,6 @@ public class StudentCourses {
                 ", studentId=" + studentId +
                 ", courseId=" + courseId +
                 '}';
-    }
-
-    public int getStudentCoursesId() {
-        return studentCoursesId;
     }
 
     public int getStudentId() {

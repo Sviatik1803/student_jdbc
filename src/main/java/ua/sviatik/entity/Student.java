@@ -1,14 +1,12 @@
 package ua.sviatik.entity;
 
 import java.util.Objects;
-import java.util.Optional;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
     private int studentId;
     private final String name;
     private final String surname;
-    private Integer  groupId;
-
+    private Integer groupId;
 
 
     public Student(int studentId, String name, String surname, Integer groupId) {
@@ -17,7 +15,8 @@ public class Student implements Comparable<Student>{
         this.surname = surname;
         this.groupId = groupId;
     }
-    public Student(String name, String surname, Integer  groupId) {
+
+    public Student(String name, String surname, Integer groupId) {
         this.name = name;
         this.surname = surname;
         this.groupId = groupId;
@@ -28,6 +27,7 @@ public class Student implements Comparable<Student>{
         this.name = name;
         this.surname = surname;
     }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -52,7 +52,7 @@ public class Student implements Comparable<Student>{
     }
 
 
-    public Integer  getGroupId() {
+    public Integer getGroupId() {
         return groupId;
     }
 

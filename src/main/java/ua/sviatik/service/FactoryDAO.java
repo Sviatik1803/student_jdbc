@@ -6,16 +6,19 @@ import ua.sviatik.dao.impl.StudentCoursesDAO;
 import ua.sviatik.dao.impl.StudentDAO;
 
 public class FactoryDAO {
-    public static GroupDAO createGroupDAO(){
+    public static GroupDAO createGroupDAO() {
         return new GroupDAO();
     }
-    public static StudentDAO createStudentDAO(){
+
+    public static StudentDAO createStudentDAO() {
         return new StudentDAO();
     }
-    public static CourseDAO CreateCourseDAO(){
+
+    public static CourseDAO CreateCourseDAO() {
         return new CourseDAO();
     }
-    public static StudentCoursesDAO StudentCoursesDAO(){
+
+    public static StudentCoursesDAO StudentCoursesDAO() {
         return new StudentCoursesDAO();
     }
 }

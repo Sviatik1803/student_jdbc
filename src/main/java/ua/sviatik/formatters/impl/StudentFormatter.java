@@ -3,16 +3,17 @@ package ua.sviatik.formatters.impl;
 import ua.sviatik.entity.Student;
 import ua.sviatik.formatters.Formatter;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StudentFormatter implements Formatter<Student> {
     @Override
     public String format(Set<Student> students) {
         int count = makeListOfString(students).get(0).length();
-        return "*".repeat(count) + "\n" + String.join("\n" + "+" + "-".repeat(3) + "+" + "-".repeat(getMaxNameSize(students)+1) + "+"
-                +  "-".repeat(getMaxSurnameSize(students)+1) + "+" + "-".repeat(getMaxGroupIdSize(students)) + "+" + "\n", makeListOfString(students)) + "\n" + "*".repeat(count);
+        return "*".repeat(count) + "\n" + String.join("\n" + "+" + "-".repeat(3) + "+" + "-".repeat(getMaxNameSize(students) + 1) + "+"
+                + "-".repeat(getMaxSurnameSize(students) + 1) + "+" + "-".repeat(getMaxGroupIdSize(students)) + "+" + "\n", makeListOfString(students)) + "\n" + "*".repeat(count);
     }
 
     private List<String> makeListOfString(Set<Student> students) {
@@ -22,7 +23,7 @@ public class StudentFormatter implements Formatter<Student> {
         int maxGroupIdSize = getMaxGroupIdSize(students);
         return students.stream()
                 .map(student -> "|" + student.getId() + getSpaces(maxIdSize, String.valueOf(student.getId())) + "| " + student.getName() + getSpaces(maxNameSize, student.getName())
-                        + "| " + student.getSurname() + getSpaces(surnameSize, student.getSurname()) + "|" + student.getGroupId() + getSpaces(maxGroupIdSize,String.valueOf(student.getGroupId())) + "|")
+                        + "| " + student.getSurname() + getSpaces(surnameSize, student.getSurname()) + "|" + student.getGroupId() + getSpaces(maxGroupIdSize, String.valueOf(student.getGroupId())) + "|")
                 .collect(Collectors.toList());
     }
 
@@ -33,18 +34,11 @@ public class StudentFormatter implements Formatter<Student> {
                 .orElse(0);
     }
 
-//    private int getMaxGroupIdSize(Set<Student> students) {
-//        return students.stream()
-//                .map(student -> student.getGroupId().toString().length())
-//                .max()
-//                .orElse(0);
-//    }
-
     private int getMaxGroupIdSize(Set<Student> students) {
-         return students.stream()
+        return students.stream()
                 .map(Student::getGroupId)
                 .filter(Objects::nonNull)
-                 .max(Integer::compare).orElseThrow();
+                .max(Integer::compare).orElseThrow();
     }
 
     private int getMaxNameSize(Set<Student> students) {

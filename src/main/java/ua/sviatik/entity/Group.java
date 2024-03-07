@@ -2,7 +2,6 @@ package ua.sviatik.entity;
 
 public class Group {
     private int groupId;
-
     private final String groupName;
 
     public Group(String groupName) {

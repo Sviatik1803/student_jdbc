@@ -2,7 +2,7 @@ package ua.sviatik.entity;
 
 import java.util.Objects;
 
-public class Course implements Comparable<Course>{
+public class Course implements Comparable<Course> {
     private int courseId;
     private final String courseName;
     private final String courseDescription;
@@ -42,11 +42,11 @@ public class Course implements Comparable<Course>{
     public String getCourseDescription() {
         return courseDescription;
     }
+
     @Override
     public int compareTo(Course o) {
         return Integer.compare(this.courseId, o.getCourseId());
     }
-
 
 
     @Override

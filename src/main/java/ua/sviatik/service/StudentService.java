@@ -5,7 +5,7 @@ import ua.sviatik.dao.impl.StudentDAO;
 public class StudentService {
     StudentDAO studentDAO;
 
-    public void getStudentByCourseName(String courseName){
+    public void getStudentByCourseName(String courseName) {
 
     }
 
