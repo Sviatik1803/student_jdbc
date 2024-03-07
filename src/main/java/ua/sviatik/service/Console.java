@@ -34,7 +34,6 @@ public class Console {
     public static final String f = "DELETE FROM student_courses WHERE (student_id = ? AND courses_id = ?)";
 
 
-
     public void start() {
         System.out.println("a. Find all groups with less or equals student count");
         System.out.println("b. Find all students related to course with given name");
@@ -54,7 +53,7 @@ public class Console {
 //                        findGroupsWithFewerStudents();
                         break;
                     case 'b':
-                        try(Scanner scanner1 = new Scanner(System.in)){
+                        try (Scanner scanner1 = new Scanner(System.in)) {
                             getCourses("SELECT * FROM courses ORDER BY course_id");
                             System.out.println("Enter course name:");
                             executeQueryB(scanner1.nextLine());
@@ -62,7 +61,7 @@ public class Console {
                         break;
                     case 'c':
                         System.out.println("Enter new student:");
-                        try(Scanner scanner1 = new Scanner(System.in)){
+                        try (Scanner scanner1 = new Scanner(System.in)) {
                             System.out.println("Name:");
                             String name = scanner1.nextLine();
                             System.out.println("Surname:");
@@ -115,7 +114,7 @@ public class Console {
         System.out.println(outputCourses);
     }
 
-    private int getGroupId (String groupName) {
+    private int getGroupId(String groupName) {
         return new GroupDAO().getByName(groupName).getGroupId();
     }
 
