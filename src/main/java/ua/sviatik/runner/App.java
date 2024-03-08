@@ -10,5 +10,6 @@ public class App {
         TableReCreator.tableReCreator();
         LoadDataToDB.loadAllData();
         new Console().start();
+
     }
 }
