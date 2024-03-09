@@ -11,5 +11,8 @@ public class App {
         LoadDataToDB.loadAllData();
         new Console().start();
 
+
+
+
     }
 }

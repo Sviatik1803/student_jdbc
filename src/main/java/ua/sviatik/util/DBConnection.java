@@ -1,4 +1,4 @@
-package ua.sviatik.dao;
+package ua.sviatik.util;
 
 import ua.sviatik.exceptions.ConnectionException;
 import ua.sviatik.exceptions.FileException;
