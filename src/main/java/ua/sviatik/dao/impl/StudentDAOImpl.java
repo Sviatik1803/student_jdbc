@@ -1,24 +1,39 @@
 package ua.sviatik.dao.impl;
 
-import ua.sviatik.dao.DAO;
-import ua.sviatik.dao.DBConnection;
+import ua.sviatik.dao.StudentDAO;
 import ua.sviatik.entity.Student;
 import ua.sviatik.exceptions.ConnectionException;
 import ua.sviatik.exceptions.CustomSQLException;
+import ua.sviatik.util.DBConnection;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Set;
+import java.util.TreeSet;
 
-public class StudentDAO implements DAO<Student> {
+public class StudentDAOImpl implements StudentDAO {
 
-    private static final String SQL_SAVE_STUDENT = "INSERT INTO students (first_name, last_name, group_id) VALUES (?,?,?)";
-    private static final String SQL_FIND_BY_COURSE_NAME = "SELECT * FROM students JOIN student_courses USING (student_id) " +
-            "JOIN courses USING (course_id) WHERE course_name = ?";
+    private static final String SAVE_STUDENT = "INSERT INTO students (first_name, last_name, group_id) VALUES (?,?,?)";
+    private static final String DELETE_STUDENT = "DELETE FROM students WHERE student_id = ?";
 
+    private static final String FIND_BY_COURSE_NAME =
+            "SELECT * FROM students JOIN student_courses USING (student_id) " +
+                    "JOIN courses USING (course_id) WHERE course_name = ?";
+
+    private static StudentDAOImpl instance;
+
+    public static StudentDAOImpl getInstance(){
+        if(instance==null){
+            instance = new StudentDAOImpl();
+        }
+        return instance;
+    }
     public Set<Student> getByCourseName(String courseName) {
         Set<Student> set = new TreeSet<>();
         try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_COURSE_NAME)
+             PreparedStatement statement = connection.prepareStatement(FIND_BY_COURSE_NAME)
         ) {
             statement.setString(1, courseName);
             ResultSet resultSet = statement.executeQuery();
@@ -75,7 +90,7 @@ public class StudentDAO implements DAO<Student> {
     @Override
     public void saveBatch(Set<Student> students) {
         try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SQL_SAVE_STUDENT)) {
+             PreparedStatement statement = connection.prepareStatement(SAVE_STUDENT)) {
 
             for (Student student : students) {
                 statement.setString(1, student.getName());

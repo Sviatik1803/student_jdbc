@@ -1,7 +1,7 @@
 package ua.sviatik.dao.impl;
 
-import ua.sviatik.dao.DAO;
-import ua.sviatik.dao.DBConnection;
+import ua.sviatik.dao.CourseDAO;
+import ua.sviatik.util.DBConnection;
 import ua.sviatik.entity.Course;
 import ua.sviatik.exceptions.ConnectionException;
 
@@ -12,8 +12,17 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class CourseDAO implements DAO<Course> {
+public class CourseDAOImpl implements CourseDAO {
     private static final String SQL_SAVE_COURSES = "INSERT INTO courses (course_name, course_description) VALUES (?, ?)";
+
+    private static CourseDAOImpl instance;
+
+    public static CourseDAOImpl getInstance(){
+        if(instance==null){
+            instance = new CourseDAOImpl();
+        }
+        return instance;
+    }
 
     @Override
     public void saveBatch(Set<Course> courses) {

@@ -1,13 +1,13 @@
 package ua.sviatik.formatters.impl;
 
 import ua.sviatik.entity.Course;
-import ua.sviatik.formatters.Formatter;
+import ua.sviatik.formatters.CourseFormatter;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CourseFormatter implements Formatter<Course> {
+public class CourseFormatterImpl implements CourseFormatter {
     @Override
     public String format(Set<Course> courses) {
         int count = makeListOfString(courses).get(0).length();

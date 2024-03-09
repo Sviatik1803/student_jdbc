@@ -1,13 +1,13 @@
 package ua.sviatik.formatters.impl;
 
 import ua.sviatik.entity.Group;
-import ua.sviatik.formatters.Formatter;
+import ua.sviatik.formatters.GroupFormatter;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class GroupFormatter implements Formatter<Group> {
+public class GroupFormatterImpl implements GroupFormatter {
     @Override
     public String format(Set<Group> groups) {
         int count = makeListOfString(groups).get(0).length();

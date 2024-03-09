@@ -1,18 +1,13 @@
 package ua.sviatik.util;
 
 
-import ua.sviatik.dao.DBConnection;
 import ua.sviatik.exceptions.ConnectionException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class TableReCreator {
 

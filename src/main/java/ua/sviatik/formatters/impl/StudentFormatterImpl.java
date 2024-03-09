@@ -1,14 +1,14 @@
 package ua.sviatik.formatters.impl;
 
 import ua.sviatik.entity.Student;
-import ua.sviatik.formatters.Formatter;
+import ua.sviatik.formatters.StudentFormatter;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class StudentFormatter implements Formatter<Student> {
+public class StudentFormatterImpl implements StudentFormatter {
     @Override
     public String format(Set<Student> students) {
         int count = makeListOfString(students).get(0).length();
